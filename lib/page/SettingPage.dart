@@ -9,6 +9,7 @@ import 'package:provider/provider.dart';
 import 'package:rating_dialog/rating_dialog.dart';
 import 'package:sp_util/sp_util.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:aichat/InitAppConfig.dart';
 
 class SettingPage extends StatefulWidget {
   const SettingPage({Key? key}) : super(key: key);
@@ -373,7 +374,7 @@ class _SettingPageState extends State<SettingPage> with WidgetsBindingObserver {
                       ),
                       SizedBox(height: 6),
                       Text(
-                        '* The AI Chat APP does not collect this key.',
+                        '* The $initAppName APP does not collect this key.',
                         textAlign: TextAlign.start,
                         softWrap: true,
                         style: TextStyle(

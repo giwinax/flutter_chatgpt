@@ -176,22 +176,22 @@ class _QuestionInputState extends State<QuestionInput> {
     }
     try {
       /// Carton
-      // void onProgress(chatStreamEvent) {
-      //   final firstCompletionChoice = chatStreamEvent.choices.first;
-      //   if (firstCompletionChoice.finishReason == 'stop') {
-      //     _updateGeneratingStatus(false);
-      //     return;
-      //   }
-      //   store.pushStreamMessage(chat['id'], messageIndex, {
-      //     'role': 'assistant',
-      //     'content': firstCompletionChoice.delta.content,
-      //   });
-      // }
-      //
-      // ChatGPT.sendMessageOnStream(
-      //   messages,
-      //   onProgress: onProgress,
-      // );
+      void onProgress(chatStreamEvent) {
+        final firstCompletionChoice = chatStreamEvent.choices.first;
+        if (firstCompletionChoice.finishReason == 'stop') {
+          _updateGeneratingStatus(false);
+          return;
+        }
+        store.pushStreamMessage(chat['id'], messageIndex, {
+          'role': 'assistant',
+          'content': firstCompletionChoice.delta.content,
+        });
+      }
+      
+      ChatGPT.sendMessageOnStream(
+        messages,
+        onProgress: onProgress,
+      );
 
       final response = await ChatGPT.sendMessage(messages);
       final firstCompletionChoice = response.choices.first;

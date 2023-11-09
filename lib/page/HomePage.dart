@@ -1,4 +1,5 @@
 import 'package:aichat/components/QuestionInput.dart';
+import 'package:aichat/InitAppConfig.dart';
 import 'package:aichat/page/ChatHistoryPage.dart';
 import 'package:aichat/page/ChatPage.dart';
 import 'package:aichat/page/SettingPage.dart';
@@ -172,9 +173,11 @@ class _HomePageState extends State<HomePage> {
                     if (store.homeHistoryList.length > 0)
                       _renderChatListWidget(
                         store.homeHistoryList,
-                      ),
-                    _renderTitle('Chat Model'),
-                    _renderChatModelListWidget(),
+                      )
+                    else 
+                      _renderTitle(initAppIntroString)
+                    // _renderTitle('Chat Model'),
+                    // _renderChatModelListWidget(),
                   ],
                 ),
               ),
